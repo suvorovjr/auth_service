@@ -32,9 +32,9 @@
 │   │   ├── logger.py             # Логирование
 │   ├── db/                       # Подключение к БД и Redis
 │   ├── domain/                   # Бизнес-логика (сущности, интерфейсы, репозитории)
-│   ├── infrastructure/           # Реализация репозиториев
+│   ├── infrastructure/           # Реализация репозиториев и SQLAlchemy моделей
 │   ├── services/                 # Сервисы (Auth, OAuth, Session и т. д.)
-│   ├── tests/                    # Тесты (юнит и функциональные)
+├── tests/                        # Тесты 
 ├── .env.example                  # Пример конфигурационного файла
 ├── docker-compose.yml             # Конфигурация Docker
 ├── Dockerfile                     # Образ для микросервиса
