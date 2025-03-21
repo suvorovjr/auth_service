@@ -11,7 +11,6 @@
 - **Alembic** — миграции базы данных  
 - **Docker & Docker Compose**  
 - **Pytest** — тестирование  
-- **Authlib** — интеграция с OAuth  
 - **Uvicorn** — ASGI-сервер  
 
 ## **Структура проекта**
