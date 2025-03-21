@@ -61,6 +61,7 @@ python -m venv .venv
 source .venv/bin/activate  # Для Linux/Mac
 .venv\Scripts\activate     # Для Windows
 pip install -r requirements.txt
+alembic upgrade head       # Применение миграций
 uvicorn src.main:app --reload
 ```
 
