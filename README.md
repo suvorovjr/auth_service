@@ -129,7 +129,5 @@ pytest
 ## 👨‍💻 **Автор**
 
 [Павел Главан / GitHub профиль]
-
 ✉️ Email: pglavan1998@gmail.com
-
 🚀 GitHub: https://github.com/suvorovjr
