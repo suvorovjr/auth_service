@@ -1,0 +1,64 @@
+services:
+  auth_nginx:
+    build: 
+      context: ./nginx
+      dockerfile: Dockerfile
+    container_name: auth_nginx
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      - auth_service
+    networks:
+      - main_network
+
+  auth_service:
+    build: .
+    container_name: auth_service
+    env_file:
+      - ./.env
+    ports:
+      - "8000:8000"
+    networks:
+      - main_network
+    entrypoint: ["/app/entrypoint.sh"]
+    command: ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+  auth_postgres:
+    image: postgres:14
+    container_name: auth_postgres
+    restart: always
+    volumes:
+      - pg_auth:/var/lib/postgresql/data/
+    env_file:
+      - ./.env
+    ports:
+      - "5432:5432"
+    networks:
+      - main_network
+
+  auth_redis:
+    image: redis:6.2
+    container_name: auth_redis
+    restart: always
+    env_file:
+      - ./.env
+    networks:
+      - main_network
+
+  auth_jaeger:
+    container_name: auth_jaeger
+    image: jaegertracing/all-in-one:latest
+    restart: always
+    ports:
+      - "6831:6831/udp"
+      - "16686:16686"
+    networks:
+      - main_network
+
+networks:
+  main_network:
+    driver: bridge
+
+volumes:
+  pg_auth:
